@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Students Attendance Register</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2196F3">
+</head>
+<body>
+<div class="container">
+
+  <h1 contenteditable="true" id="schoolName">Students Attendance Register</h1>
+
+  <div class="top-bar">
+    <select id="classSelect">
+      <option value="">کلاس سلیکٹ کریں</option>
+      <option value="کچی">کچی</option>
+      <option value="1st">1st</option>
+      <option value="2nd">2nd</option>
+      <option value="3rd">3rd</option>
+      <option value="4th">4th</option>
+      <option value="5th">5th</option>
+      <option value="6th">6th</option>
+      <option value="7th">7th</option>
+      <option value="8th">8th</option>
+      <option value="9th">9th</option>
+      <option value="10th">10th</option>
+    </select>
+
+    <select id="monthSelect"></select>
+    <input type="date" id="dateSelect">
+  </div>
+
+  <div class="time-bar">
+    <label>Class Incharge: <span contenteditable="true" id="inchargeName">نام لکھیں</span></label>
+    <label>P1 Time: <span contenteditable="true" id="p1Time">اسمبلی بعد</span></label>
+    <label>P2 Time: <span contenteditable="true" id="p2Time">7th پیریڈ</span></label>
+  </div>
+
+  <div class="btn-group">
+    <button onclick="showTab('students')">+ Add Student</button>
+    <button onclick="showTab('attendance')">Attendance لگائیں</button>
+    <button onclick="showTab('goshwara')">Goshwara</button>
+    <button onclick="showTab('ftf')">FTF</button>
+  </div>
+
+  <!-- Students Tab -->
+  <div id="students" class="tab">
+    <h3>Students List - <span id="className">کلاس</span></h3>
+    <button onclick="addStudent()">+ نیا طالبعلم</button>
+    <table id="studentTable">
+      <tr><th>Roll</th><th>Reg No</th><th>Name</th><th>Father</th><th>Action</th></tr>
+    </table>
+  </div>
+
+  <!-- Attendance Tab -->
+  <div id="attendance" class="tab" style="display:none">
+    <h3>حاضری - <span id="attDate"></span> | Incharge: <span id="attIncharge"></span></h3>
+    <table id="attTable">
+      <tr><th>Roll</th><th>Name</th><th>P1</th><th>P2</th></tr>
+    </table>
+    <button onclick="saveAttendance()">Save حاضری</button>
+  </div>
+
+  <!-- Goshwara Tab -->
+  <div id="goshwara" class="tab" style="display:none">
+    <h3 id="gTitle">Attendance Goshwara</h3>
+    <button onclick="generateGoshwara()">Generate</button>
+    <table id="goshwaraTable"></table>
+  </div>
+
+  <!-- FTF Tab -->
+  <div id="ftf" class="tab" style="display:none">
+    <h3 id="fTitle">FTF Goshwara 20Rs</h3>
+    <button onclick="generateFTF()">Generate</button>
+    <table id="ftfTable"></table>
+  </div>
+
+</div>
+<script src="script.js"></script>
+<script>
+if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+</script>
+</body>
+</html>
